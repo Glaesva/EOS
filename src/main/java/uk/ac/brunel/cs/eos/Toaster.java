@@ -6,6 +6,11 @@ public class Toaster {
 	private int level;
 	private boolean state = false;
 	
+	public void Toaster{
+		
+	}
+	
+	
 	public void StartToaster(){
 		
 		state = true;
@@ -27,7 +32,7 @@ public class Toaster {
 	
 	@Override
 	public String toString() {		
-		return "Status: " + status + " Washing Machine power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
+		return "Toaster power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
 	}
 	
 	

@@ -8,6 +8,12 @@ public class TumbleDryer {
 	private double cycleTime;
 	Stopwatch tdstopwatch = new Stopwatch(00, 00, 00);
 	
+	public void TumbleDryer(){
+		
+	}
+	
+	
+	
 	public void StartDryer(int level){
 		TumbleDryer td = new TumbleDryer();
 		state = true;
@@ -32,7 +38,7 @@ public class TumbleDryer {
 	
 	@Override
 	public String toString() {		
-		return "Status: " + status + " Washing Machine power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
+		return " Tumble dryer power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
 	}
 	
 	

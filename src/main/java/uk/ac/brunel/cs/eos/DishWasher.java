@@ -7,6 +7,12 @@ public class DishWasher {
 	private double powerPerMinute;
 	private String status; 
 	
+	public void DishWasher(){
+		
+	}
+	
+	
+	
 	public void StartDishWasher(){
 		state = true;
 		
@@ -30,14 +36,9 @@ public class DishWasher {
 	
 	
 	
-	
-	
-	
-	
-	
 	@Override
 	public String toString() {		
-		return "Status: " + status + " Washing Machine power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
+		return "Status: " + status + " Power consumed by the dishwasher in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
 	}
 	
 	

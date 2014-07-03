@@ -6,6 +6,10 @@ public class HotWaterTank {
 	private double powerPerMinute;
 	private boolean state = false;
 	
+	public void HotWaterTank(){
+		
+	}
+	
 	
 	public void TankOperation(int desiredTemp){
 		
@@ -21,6 +25,6 @@ public class HotWaterTank {
 	
 	@Override
 	public String toString() {		
-		return "Status: " + status + " Washing Machine power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
+		return "Water temperature: " + temperature + " Hot water tank power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
 	}
 }
