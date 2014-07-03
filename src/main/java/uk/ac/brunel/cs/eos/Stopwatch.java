@@ -1,16 +1,25 @@
 
 public class Stopwatch {
+	
+	private static Stopwatch instance = null; 
 
 	private int hour;
 	private int minute;
 	private int second;
 	boolean running;
 	
-	public Stopwatch(int hour, int minute, int second){
-		hour = 00;
-		minute = 00;
-		second = 00;
+	private Stopwatch(){
+		hour = 0;
+		minute = 0;
+		second = 0;
 		running = false;
+	}
+	
+	public synchronized static Stopwatch getInstance() {
+		if (instance==null) {
+			instance = new Stopwatch();
+		}
+		return instance;
 	}
 	
 	public void run(){		
