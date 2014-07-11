@@ -4,20 +4,26 @@ public class HotWaterTank {
 	private int temperature;
 	private double powerConsumption;
 	private double powerPerMinute;
-	private boolean state = false;
+	private boolean state;
+	private Clock cycleTimeHWT;
 	
-	public void HotWaterTank(){
+	public HotWaterTank(){
 		
+		powerPerMinute = 0.5;
+		state = false;
 	}
 	
 	
 	public void TankOperation(int desiredTemp){
 		
 		state = true;
+		cycleTimeHWT.run();
 		while (temperature < desiredTemp){
 			powerConsumption = powerConsumption + powerPerMinute;
 			temperature++;
 		}
+		System.out.println(cycleTimeHWT);
+		cycleTimeHWT.running = false;
 		state = false;
 	}
 

@@ -6,9 +6,12 @@ public class WashingMachine {
 	private double powerConsumption;
 	private double powerPerMinute;	
 	private double cycleTime;
-	Stopwatch wmstopwatch = new Stopwatch(00, 00, 00);
+	private double Power_Prewash = 0;
+	private double Power_Washing = 0;
+	private double Power_Rinsing = 0;
+	private double Power_Spinning = 0;
 	
-	//Constructor Method
+	
 	public WashingMachine(){
 		state = false;
 		status = "Available";			
@@ -19,58 +22,31 @@ public class WashingMachine {
 	public void StartWashingMachine(){
 		
 		
-		WashingMachine wm = new WashingMachine();
-		wm.state = true;
-		wmstopwatch.run();
-		wm.PrewashStage();
-		wm.WashingStage();
-		wm.RinsingStage();
-		wm.SpinningStage();
-		wmstopwatch.running = false;
+		state = true;
+		cycleTimeWM.run();
+		while(cycleTimeWM.getMinute() < 16){
+			status = "Prewash";	
+			Power_Prewash = Power_Prewash + 0.1;
+		}
+		while(cycleTimeWM.getMinute() < 31){
+			status = "Washing";
+			Power_Washing = Power_Washing + 0.3;
+		}
+		while(cycleTimeWM.getMinute() < 46){
+			status = "Rinsing";
+			Power_Rinsing = Power_Rinsing + 0.2;
+		}
+		while(cycleTimeWM.getMinute() < 61){
+			status = "Spinning";
+			Power_Spinning = Power_Spinning + 0.5;
+		}		
 		
-		
+		if (cycleTimeWM.getHour() == 1){
+			state = false;
+			cycleTimeWM.running = false;
+		}
+		powerConsumption = Power_Prewash + Power_Washing + Power_Rinsing + Power_Spinning;
 		powerPerMinute = powerConsumption/60;
-		System.out.println(wm);
-	}
-	
-	private void PrewashStage(){		
-		
-		double Power_Prewash = 0;
-		status = "Prewash";
-		while (wmstopwatch.minute < 16 )		
-			Power_Prewash = Power_Prewash + 0.02;
-		}	
-		powerConsumption = powerConsumption + Power_Prewash;
-	}
-	
-	private void WashingStage(){
-		
-		double Power_Washing = 0;
-		
-		for (int i = 45; i >= 31; i--){			
-			Power_Washing = Power_Washing + 0.01;
-		}	
-		powerConsumption = powerConsumption + Power_Washing;
-	}
-	
-	private void RinsingStage(){	
-				
-		double Power_Rinsing = 0;
-		
-		for (int i = 30; i >= 16; i--){			
-			Power_Rinsing = Power_Rinsing + 0.01;
-		}	
-		powerConsumption = powerConsumption + Power_Rinsing;
-	}
-	private void SpinningStage(){		
-		
-		double Power_Spinning = 0;
-		
-		for (int i = 15; i >= 1; i--){
-			
-			Power_Spinning = Power_Spinning + 0.03;
-		}	
-		powerConsumption = powerConsumption + Power_Spinning;
 	}
 	
 	
