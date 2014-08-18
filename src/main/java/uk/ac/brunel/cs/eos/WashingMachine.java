@@ -1,11 +1,13 @@
+package uk.ac.brunel.cs.eos;
 
-public class WashingMachine {
+public class WashingMachine extends Appliance {
 
 	private boolean state;
 	private String status;
 	private double powerConsumption;
 	private double powerPerMinute;	
 	private double cycleTime;
+	private Clock cycleTimeWM;
 	private double Power_Prewash = 0;
 	private double Power_Washing = 0;
 	private double Power_Rinsing = 0;
@@ -23,7 +25,7 @@ public class WashingMachine {
 		
 		
 		state = true;
-		cycleTimeWM.run();
+
 		while(cycleTimeWM.getMinute() < 16){
 			status = "Prewash";	
 			Power_Prewash = Power_Prewash + 0.1;
@@ -54,6 +56,13 @@ public class WashingMachine {
 	@Override
 	public String toString() {		
 		return "Status: " + status + " Washing Machine power consumption in the cycle: " + powerConsumption + " Avarage power consumed per minute: " + powerPerMinute;
+	}
+
+
+
+	@Override
+	void go() {
+		StartWashingMachine();
 	}
 	
 }

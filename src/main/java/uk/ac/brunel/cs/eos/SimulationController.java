@@ -1,3 +1,5 @@
+package uk.ac.brunel.cs.eos;
+
 
 public class SimulationController {
 
@@ -22,9 +24,8 @@ public class SimulationController {
 		TumbleDryer td = new TumbleDryer();
 		HotWaterTank hwt = new HotWaterTank();
 		
-		if (ctrlClock.getHour() == 7){
-			wm.StartWashingMachine();
-		}
+		wm.startAt(7);
+		
 		if (ctrlClock.getHour() == 11){
 			dw.StartDishWasher();
 		}

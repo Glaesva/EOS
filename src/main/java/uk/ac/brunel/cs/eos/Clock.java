@@ -1,5 +1,7 @@
+package uk.ac.brunel.cs.eos;
 
-public class Clock {
+
+public class Clock implements Runnable {
 	
 	private static Clock instance = null; 
 	private int hour;
@@ -18,7 +20,8 @@ public class Clock {
 	public synchronized static Clock getInstance() {
 		if (instance==null) {
 			instance = new Clock();
-			instance.run();
+			Thread clockThread = new Thread(instance, "Clock Thread");
+			clockThread.start();
 		}
 		return instance;
 	}
@@ -26,12 +29,18 @@ public class Clock {
 	public void run(){			
 		
 		running = true;
-		while(running = true){
+		while(running == true){
 		System.out.println(hour + ":" + minute + ":" + second);		
 		second ++;		
 		if(second == 60){
 			second = 0;
 			minute ++;
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // Sleep for 100ms
 			if(minute == 60){
 				minute = 0;
 				hour ++;
@@ -69,5 +78,3 @@ public class Clock {
 
 
 
-
-}
